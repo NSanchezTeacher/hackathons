@@ -1,16 +1,13 @@
 from flask import Flask, render_template, request, send_file
 import json
-import random
-import itertools
-from operator import itemgetter
-from functools import reduce
-import csv
 from problems import Problems
+from flask_cors import CORS, cross_origin
 
 
 problems = Problems()
 
-app = Flask(__name__, template_folder='.')
+app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
@@ -28,6 +25,7 @@ def setGroup():
 
 @app.route('/getData')
 def getData():
+    print(json.dumps(problems.getResponses()))
     return json.dumps(problems.getResponses())
 
 

@@ -2,7 +2,7 @@ from http.client import responses
 
 class Problems:
 
-    respones = {
+    responses = {
         "grupo1": [False, False, False, False, False],
         "grupo2": [False, False, False, False, False],
         "grupo3": [False, False, False, False, False],
@@ -17,4 +17,4 @@ class Problems:
 
 
     def getResponses(self):
-        return responses
+        return self.responses

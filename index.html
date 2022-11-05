@@ -2,23 +2,27 @@
 <html>
 <head>
     <title>Flask-SocketIO Test</title>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-        }
-        .not-resolve{
-            background-color: red;
-        }
-
-        .resolved{
-            background-color: greenyellow;
-        }
-
-    </style>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
+    <link href="css/index.css" rel="stylesheet" media="screen"> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
+        
+
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:5000/getData",
+                success: function(data) {
+                    data = JSON.parse(data);
+                    for (let value of Object.keys(data))
+                    {
+                        console.log(value);
+                    }
+                }
+            });
+            
+            
             function changeNumber() {
                 $.ajax({
                     type: "GET",
@@ -33,73 +37,97 @@
                                 $(cls).removeClass();
                                 
                                 if(val){
-                                    $(cls).addClass("resolved");
+                                    $(cls).addClass("table-succes");
                                 }
                                 else{
-                                    $(cls).addClass("not-resolve");
+                                    $(cls).addClass("table-danger");
                                 }
                             }
                         
                     }
                 });
-            }
-            setInterval(changeNumber, 3000);
+            } setInterval(changeNumber, 3000);
         });
 
     </script>
 </head>
 <body>
-    <table>
-        <tr>
-          <th>Group</th>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-          
-        </tr>
-        <tr>
-          <td>Grupo 1</td>
-          <td width="50" id="G1P1" class="not-resolve"></td>
-          <td width="50" id="G1P2" class="not-resolve"></td>
-          <td width="50" id="G1P3" class="not-resolve"></td>
-          <td width="50" id="G1P4" class="not-resolve"></td>
-          <td width="50" id="G1P5" class="not-resolve"></td>
-          
-        </tr>
-        <tr>
-            <td>Grupo 2</td>
-            <td width="50" id="G2P1" class="not-resolve"></td>
-            <td width="50" id="G2P2" class="not-resolve"></td>
-            <td width="50" id="G2P3" class="not-resolve"></td>
-            <td width="50" id="G2P4" class="not-resolve"></td>
-            <td width="50" id="G2P5" class="not-resolve"></td>
+    <br><br>
+    <div class="container align-middle">
+        
+        <div class="row">
+          <div class="col col-2">
+          </div>
+          <div class="col col-8">
             
-          </tr>
-          <tr>
-            <td>Grupo 3</td>
-            <td width="50" id="G3P1" class="not-resolve"></td>
-            <td width="50" id="G3P2" class="not-resolve"></td>
-            <td width="50" id="G3P3" class="not-resolve"></td>
-            <td width="50" id="G3P4" class="not-resolve"></td>
-            <td width="50" id="G3P5" class="not-resolve"></td>
-          </tr>
-      </table>
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">Grupo</th>
+                            <th scope="col">Ejercicio1</th>
+                            <th scope="col">Ejercicio2</th>
+                            <th scope="col">Ejercicio3</th>
+                            <th scope="col">Ejercicio4</th>
+                            <th scope="col">Ejercicio5</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th>Grupo 1</td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                          </tr>
+                          <tr>
+                            <th>Grupo 2</td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                          </tr>
+                          <tr>
+                            <th>Grupo 3</td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                          </tr>
+                          <tr>
+                            <th>Grupo 4</td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                          </tr>
+                          <tr>
+                            <th>Grupo 5</td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                            <td class="table-danger"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+           
+          </div>
+        </div>
+      </div>
       
-      <p>Vamos a realizar una serie de ejercicios para probar el objeto Request. El objetivo es competir contra los otros grupos y ver quien tiene la mayor puntuación.</p>
-      <p>Cada ejercicio tiene un enlace GET y otr POST. El enlace GET sirve para recoger los datos necesarios para resolver el problema.</p>
-      <p>El enlace de tipo POST sirve para enviar la solución al problema, la cual tiene que tener dos parámetros en el body: group, indicando el grupo y data, con la respuesta.</p>
-      <p>Cada ejercicio tiene como ruta la dirección y puerto indicado por el profesor, seguido de /ej<n>, donde <n> es el número del ejercicio.</p>
-      <p>Por ejemplo: localhost:5000/ej1 para el primer ejercicio</p>
-
-      <hr>
-
-      <p><b>Ejercicio 1 - </b>Realiza una petición que indicando a que grupo perteneces. En esta petición no es necesario indicar los datos, solo el grupo.</p>
+      <!--<p><b>Ejercicio 1 - </b>Realiza una petición que indicando a que grupo perteneces. En esta petición no es necesario indicar los datos, solo el grupo.</p>
       <p><b>Ejercicio 2 - </b>Genera un array con los números primos entre el 1 y el 100. No hace falta descargar nada.</p>
       <p><b>Ejercicio 3 - </b>Descarga un el fichero csv del enlace, gúardalo en disco y sube un array con todas las líneas.</p>
       <p><b>Ejercicio 4 - </b>Descarga el array del enlace, realiza las combinaciones de los elementos. Las combinaciones deben ser de dos elementos entre si. Agrupa en base al primer elemento. Sube el resultado.</p>
       <p><b>Ejercicio 5 - </b>Descarga el fichero csv del servidor. Sube un array con las líneas que son del periodo perteneciente al año 2012. Sube el resultado.</p>
-      <p><b>Nota - </b>Para este ejercicio puedes utilizar la función csv.reader. Investiga sobre ella.</p>
+      <p><b>Nota - </b>Para este ejercicio puedes utilizar la función csv.reader. Investiga sobre ella.</p>-->
 </body>
+
+
+
 </html>
