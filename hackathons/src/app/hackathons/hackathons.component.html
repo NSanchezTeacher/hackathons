@@ -3,51 +3,31 @@
 
 <div >
   <p-card >
-    <p-table responsiveLayout="scroll" >
+    <p-table [value]="hackPresenter.groups" styleClass="p-datatable-gridlines" responsiveLayout="scroll" >
       <ng-template pTemplate="header">
           <tr>
-              <th>Grupo</th>
-              <th>Ejercicio 1</th>
-              <th>Ejercicio 2</th>
-              <th>Ejercicio 3</th>
-              <th>Ejercicio 4</th>
-              <th>Ejercicio 5</th>
-  
+              <th *ngFor= "let hd of hackPresenter.headers">{{hd}}</th>
             </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-product>
-        <tr>
-          <th>Grupo 1</th>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-          <td><p-tag styleClass="mr-2" icon="pi pi-check" severity="success" value="Success"></p-tag></td>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
+      <ng-template pTemplate="body" let-gr>
+        <tr >
+          <td ><b>{{gr.group}}</b></td>
+          <td *ngFor="let ex of gr.exercices">
+              <button *ngIf="ex.resolved;else errorContent" pButton pRipple type="button" label="Completado" icon="pi pi-check"  class="p-button-sm p-button-success"></button>
+             
+              <ng-template #errorContent>
+                <button pButton pRipple type="button" label="No Completado"  (click)="showDialog(ex)" icon="pi pi-times"  class="p-button-sm p-button-danger"></button>
+                <p-dialog header="{{dialogData.header}}" [(visible)]="dialogData.display" [style]="{width: '50vw'}">
+                  <p>{{dialogData.description}}</p>
+                  <ng-template pTemplate="footer">
+                      <p-button icon="pi pi-check" (click)="showDialog(ex)" label="Aceptar" styleClass="p-button-text"></p-button>
+                  </ng-template>
+              </p-dialog>
+              </ng-template>
+          
+          </td>
+
         </tr>
-        <tr>
-          <th>Grupo 2</th>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-          <td><p-tag styleClass="mr-2" icon="pi pi-check" severity="success" value="Success"></p-tag></td>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-        </tr>
-        <tr>
-          <th>Grupo 3</th>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-          <td><p-tag styleClass="mr-2" icon="pi pi-check" severity="success" value="Success"></p-tag></td>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-        </tr>
-        <tr>
-          <th>Grupo 4</th>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-          <td><p-tag styleClass="mr-2" icon="pi pi-check" severity="success" value="Success"></p-tag></td>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-          <td><p-tag icon="pi pi-times" severity="danger" value="Error"></p-tag></td>
-      </tr>
       </ng-template>
     </p-table>
   

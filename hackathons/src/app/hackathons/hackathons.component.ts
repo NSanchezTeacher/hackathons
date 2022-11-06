@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HackathonsPresenter } from './hackathons.presenter';
 
 @Component({
   selector: 'hackathons-component',
@@ -9,9 +10,31 @@ import { Component, OnInit } from '@angular/core';
 
 export class HackathonsComponent implements OnInit{
     title = 'hackathons';
+    
+ 
+    dialogData = {
+      "header": "",
+      "description": "",
+      "display": false
+    }
+
+    constructor(public hackPresenter: HackathonsPresenter){}
 
     ngOnInit() {
-        
+      this.hackPresenter.getData();
+      setTimeout(() =>{
+            this.ngOnInit();
+        }, 3000);
+      
+      
     }
+
+    showDialog(ex) {
+        this.dialogData.display = !this.dialogData.display;
+        this.dialogData.header = ex.name;
+        this.dialogData.description = ex.description;
+    }
+
+
 
 }

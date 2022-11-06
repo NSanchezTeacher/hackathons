@@ -1,4 +1,4 @@
-import requests
+import backend.requests as requests
 import json
 import csv
 import itertools
