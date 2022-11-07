@@ -10,9 +10,11 @@ app = Flask(__name__)
 CORS(app)
 #sock = Sock(app)
 
-@app.route('/resolve',methods=['GET'])
+@app.route('/resolve',methods=['POST'])
 def setGroup():
-    return problems.resolve()
+    group = request.headers.get("group")
+    data = request.json
+    return problems.resolve(group, data["exercice"], data["solution"])
 
 
 @app.route('/getData')

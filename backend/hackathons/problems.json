@@ -6,7 +6,7 @@
             "description": "Pudiera ser que este ejercicio fuese distinto",
             "name": "Ejercicio 1",
             "resolved": false,
-            "solution": 1
+            "solution": [1,2,3]
         },
         {
             "id": "EJ2",

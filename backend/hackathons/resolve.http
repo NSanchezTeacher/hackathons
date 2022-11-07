@@ -1,0 +1,8 @@
+POST http://localhost:5000/resolve
+Content-Type: application/json
+group: GR1
+
+{
+    "exercice": "EJ1",
+    "solution": [1,2,3]
+}
