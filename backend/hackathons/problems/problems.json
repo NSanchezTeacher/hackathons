@@ -1,0 +1,40 @@
+{
+    "groups": 5,
+    "exercices": [
+        {
+            "id": "EJ1",
+            "description": "Pudiera ser que este ejercicio fuese distinto",
+            "name": "Ejercicio 1",
+            "resolved": false,
+            "solution": {"num":1,"bb":true,"pal":"hola"}
+        },
+        {
+            "id": "EJ2",
+            "description": "descripción del ejercicio 2",
+            "name": "Ejercicio 2",
+            "resolved": false,
+            "solution": 1
+        },
+        {
+            "id": "EJ3",
+            "description": "descripción del ejercicio 3",
+            "name": "Ejercicio 3",
+            "resolved": false,
+            "solution": 1
+        },
+        {
+            "id": "EJ4",
+            "description": "descripción del ejercicio 4",
+            "name": "Ejercicio 4",
+            "resolved": false,
+            "solution": 1
+        },
+        {
+            "id": "EJ5",
+            "description": "descripción del ejercicio 5",
+            "name": "Ejercicio 5",
+            "resolved": false,
+            "solution": 1
+        } 
+    ] 
+}

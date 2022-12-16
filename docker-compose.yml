@@ -1,0 +1,17 @@
+version: "3"
+services:
+  flask:
+    container_name: hackathons_backend
+    build: ./backend
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - ./problems:/usr/src/app/hackathons/problems
+    
+
+  angular:
+    container_name: hackathons_frontend
+    build: ./hackathons
+    ports:
+      - "80:80"

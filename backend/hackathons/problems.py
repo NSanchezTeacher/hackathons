@@ -9,7 +9,7 @@ class Problems:
     def __init__(self) -> None:
         # Opening JSON file
         path = os.path.dirname(__file__)
-        with open(path + '/problems.json', encoding='utf-8') as fh:
+        with open(path + '/problems/problems.json', encoding='utf-8') as fh:
             # returns JSON object as 
             # a dictionary
             self.createGroups(json.load(fh))
